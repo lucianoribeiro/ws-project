@@ -3,7 +3,7 @@ package com.sqa.lp.core;
 import org.apache.log4j.*;
 import org.openqa.selenium.*;
 
-import com.sqa.lp.core.*;
+import com.sqa.jf.core.*;
 import com.sqa.lp.helpers.*;
 
 public class Core {
@@ -69,6 +69,13 @@ public class Core {
 		return this.log;
 	}
 
+	// Non static method to get property value given a specific key
+	public String getProp(String propName) {
+		// return the value of the key based on a file located in
+		// src/main/resources/config.properties
+		return AutoBasics.getProp(propName, "src/main/resources/", "config.properties", getLog());
+	}
+
 	// Method that cheks if an element is present on the page.
 	public boolean isElementPresent(String xpathString) {
 		return AutoBasics.isElementPresent(getDriver(), By.xpath(xpathString), getLog());
@@ -80,14 +87,9 @@ public class Core {
 				this.getLog());
 		count++;
 	}
-	//Non static method to get property value given a specific key
-public String getProp(String Key){
-	return AutoBasics.getProp(Key,  "src/main/resource/", "config.properties", getLog());
-}
 
 	// Example of a non static implementation of the static helper method
 	public void takeScreenshot(String name) {
-		//return the value of the key based on a file located in src/main/resources/config.properties
 		AutoBasics.takeScreenshot("screenshots/", name, count, getDriver(), this.getLog());
 		count++;
 	}
