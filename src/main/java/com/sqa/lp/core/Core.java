@@ -80,6 +80,10 @@ public class Core {
 		return AutoBasics.isElementPresent(getDriver(), By.xpath(xpathString), getLog());
 	}
 
+	public boolean isPresent(By by) {
+		return AutoBasics.isElementPresent(getDriver(), by, getLog());
+	}
+
 	// Example of a non static implementation of the static helper method
 	public void takeScreenshost() {
 		AutoBasics.takeScreenshot("screenshots/", "Craigslist Test", count, getDriver(),
@@ -89,7 +93,7 @@ public class Core {
 
 	// Example of a non static implementation of the static helper method
 	public void takeScreenshot(String name) {
-		AutoBasics.takeScreenshot("screenshots/", name, count, getDriver(), this.getLog());
+		AutoBasics.takeScreenshot("screenshots/", name, count, getDriver(), getLog());
 		count++;
 	}
 
